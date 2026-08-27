@@ -19,7 +19,7 @@ export default defineEventHandler((event) => {
   const authHeader = getRequestHeader(event, 'authorization')
   const token = authHeader?.split(' ')[1] // Récupère le texte après "Bearer "
 
-  const config = useRuntimeConfig()
+  //const config = useRuntimeConfig()
   console.log(token, userState.token)
   // 3. Vérification du token
   if (!token || token !== userState.token) {

@@ -1,3 +1,5 @@
+import userState from "../utils/state"
+
 export default defineEventHandler(async (e) => {
        const body = await readBody(e)
 
@@ -25,7 +27,7 @@ export default defineEventHandler(async (e) => {
                 path: '/'
             })
             userState.token = tokenValue
-            return { success: true, message: 'Connexion réussie', token: tokenValue }
+            return { success: true, message: 'Connexion réussie', token: tokenValue, tokenState: userState.token }
         }
         else {
            throw createError({
