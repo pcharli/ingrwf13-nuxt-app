@@ -1,0 +1,4 @@
+db_host = srv660.hstgr.io
+db_pass = NuxtCepegra11!
+db_user = u868520261_nuxt
+db_name = u868520261_nuxt
