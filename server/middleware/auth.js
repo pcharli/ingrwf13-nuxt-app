@@ -9,7 +9,7 @@ export default defineEventHandler((event) => {
   const isApiRoute = url.pathname.startsWith('/api/')
 
   // Si c'est une simple lecture GET, on laisse passer tout le monde
-  if (!isApiRoute || !isProtectedMethod) {
+  if (!isApiRoute || !isProtectedMethod || url.pathname.startsWith('/api/auth')) {
     return
   }
 
