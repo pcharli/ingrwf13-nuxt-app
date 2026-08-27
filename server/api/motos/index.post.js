@@ -1,9 +1,9 @@
 export default defineEventHandler(async (e) => {
     const body = await readBody(e)
     const newMoto = {
-        marque: "Honda",
-        modele: "500",
-        couleur: "rouge"
+        marque: body.marque,
+        modele: body.modele,
+        couleur: body.couleur
     }
     try {
         const [result] = await db.query(
