@@ -9,8 +9,9 @@ export default defineEventHandler(async (e) => {
 
     return {
         id: result.insertId,
-        title: body.title,
-        duration: body.duration
+        modele: body.modele,
+        marque: body.marque,
+        couleur: body.couleur
     }
     } catch(error) {
         throw createError({
