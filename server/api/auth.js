@@ -14,18 +14,24 @@ export default defineEventHandler(async (e) => {
   }
     try {
         const [rows] = await db.query('SELECT * FROM users WHERE login= ? AND pass = ?',
-            [body.login, body.pass]
+            [login, pass]
         )
         if(rows.length > 0){
         // Stocke le token dans un cookie sécurisé (survit au F5)
-            const token = useCookie('api_token', {
-                maxAge: 60 * 60 * 24 * 7 // Valide 7 jours
+            tokenValue = rows[0].id + rows[0].login
+            setCookie(e, 'api_token', tokenValue, {
+                maxAge: 60 * 60 * 24 * 7, // 7 jours
+                httpOnly: true,           // Sécurité : empêche l'accès via document.cookie en JS client
+                path: '/'
             })
-            token.value = rows[0].id + rows[0].login
+            return { success: true, message: 'Connexion réussie' }
         }
         else {
-            return {message: 'pas ok'}
-        }
+           throw createError({
+            statusCode: 401,
+            statusMessage: 'Identifiants incorrects'
+        })
+    }
 
     }catch(error) {
         throw createError({
