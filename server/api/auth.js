@@ -18,7 +18,7 @@ export default defineEventHandler(async (e) => {
         )
         if(rows.length > 0){
         // Stocke le token dans un cookie sécurisé (survit au F5)
-            tokenValue = rows[0].id + rows[0].login
+            const tokenValue = rows[0].id + rows[0].login
             setCookie(e, 'api_token', tokenValue, {
                 maxAge: 60 * 60 * 24 * 7, // 7 jours
                 httpOnly: true,           // Sécurité : empêche l'accès via document.cookie en JS client
