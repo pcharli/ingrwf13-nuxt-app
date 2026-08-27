@@ -8,7 +8,7 @@ export default defineEventHandler(async (e) => {
     try {
         const [result] = await db.query(
     'INSERT INTO motos (marque, modele, couleur) VALUES (?, ?, ?)',
-    [body.marque, body.modele, body.couleur ? 1 : 0]
+    [body.marque, body.modele, body.couleur]
   )
 
   return {
