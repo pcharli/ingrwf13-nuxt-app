@@ -25,7 +25,8 @@ export default defineEventHandler((event) => {
   if (!token || token !== userState.token) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Accès refusé : Token d\'API invalide ou manquant.'
+      statusMessage: 'Accès refusé : Token d\'API invalide ou manquant.',
+      tokenState: userState.token
     })
   }
 })
