@@ -1,4 +1,6 @@
 // server/middleware/auth.js
+// exécuté automatiquement à chaque requête
+
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
 

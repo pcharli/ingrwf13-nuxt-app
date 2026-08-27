@@ -1,4 +1,4 @@
-// app/composables/useAuth.ts
+// app/composables/useAuth.js
 export const useAuth = () => {
   // Stocke le token dans un cookie sécurisé (survit au F5)
   const token = useCookie('api_token', {
