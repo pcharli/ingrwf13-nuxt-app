@@ -24,6 +24,7 @@ export default defineEventHandler(async (e) => {
                 httpOnly: true,           // Sécurité : empêche l'accès via document.cookie en JS client
                 path: '/'
             })
+            userState.token = tokenValue
             return { success: true, message: 'Connexion réussie', token: tokenValue }
         }
         else {
