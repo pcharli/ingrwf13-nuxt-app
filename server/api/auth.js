@@ -17,10 +17,10 @@ export default defineEventHandler(async (e) => {
             [body.login, body.pass]
         )
         if(rows.length > 0){
-            return 'ok'
+            return {message: 'ok'}
         }
         else {
-            return 'pas ok'
+            return {message: 'pas ok'}
         }
 
     }catch(error) {
