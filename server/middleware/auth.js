@@ -1,6 +1,8 @@
 // server/middleware/auth.js
 // exécuté automatiquement à chaque requête
 
+import { userState } from "../utils/state"
+
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
 
@@ -18,7 +20,7 @@ export default defineEventHandler((event) => {
   const token = authHeader?.split(' ')[1] // Récupère le texte après "Bearer "
 
   const config = useRuntimeConfig()
-
+  console.log(token, userState.token)
   // 3. Vérification du token
   if (!token || token !== userState.token) {
     throw createError({
